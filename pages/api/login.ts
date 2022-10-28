@@ -19,13 +19,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (!userId) res.status(404).json({ message: "User doesn't exist" });
 
       const user = await getUserById(userId);
-      const val_pass = await bcrypt.compare(password, user.password);
+      if ( user !== undefined ) {
+        const val_pass = await bcrypt.compare(password, user.password);
 
-      if (val_pass) {
-        res.status(200).json({ ...user, userId});
+        if (val_pass) {
+          res.status(200).json({ ...user, userId});
+        } else {
+          res.status(401).json({ message: "Incorrect Account or Password."});
+        }
       } else {
-        res.status(401).json({ message: "Incorrect Account or Password."});
+        res.status(500).json({ message: "Something went wrong"});
       }
+      
     } catch (error) {
       res.status(500).json({ message: "Something went wrong."});
     }

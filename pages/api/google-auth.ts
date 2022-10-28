@@ -6,7 +6,7 @@ import { getUserIdBySub } from "../../utils/queries";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if(req.method === 'POST') {
-    const { email, name, sub, picture } = req.body;
+    const { email, name, sub } = req.body;
 
     try {
 
