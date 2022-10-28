@@ -1,0 +1,17 @@
+
+@keyframes titleAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.customTitle {
+  opacity: 0;
+  animation-name: titleAnimation; 
+  animation-duration: 0.35s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}

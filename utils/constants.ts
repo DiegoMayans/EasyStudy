@@ -1,0 +1,1 @@
+export const footerList = [["Sign Up", "home?s=true"], ["Log In", "home?s=true"], ["Privacy", "home"], ["Terms", "home"], ["Developers", "home"], ["About", "about"]]
