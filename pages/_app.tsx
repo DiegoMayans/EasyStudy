@@ -11,6 +11,12 @@ import GlobalStateProvider from "../components/GlobalStateProvider";
 import Script from "next/script";
 import AppWrapper from "../components/AppWrapper";
 
+declare global {
+  interface Window {
+    google: any;
+  }
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [isSSR, setIsSSR] = useState(true);
   const [isLoginHidden, setIsLogInHidden] = useState(true);
@@ -30,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
 
-        <Script src="https://accounts.google.com/gsi/client" async defer />
+        <Script id="google_script" src="https://accounts.google.com/gsi/client" async defer />
         <AppWrapper>
           <div>
             {!isLoginHidden && (

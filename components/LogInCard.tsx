@@ -15,6 +15,7 @@ interface IProps {
 }
 
 const LogInCard = ({ setIsLogInHidden, setIsSignUpHidden }: IProps) => {
+  let google = window.google;
   const [emailChosen, setEmailChosen] = useState(false);
   const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const LogInCard = ({ setIsLogInHidden, setIsSignUpHidden }: IProps) => {
       cancel_on_tap_outside: false,
       context: "signup",
     });
-  }, []);
+  }, [google.accounts.id, dispatch]);
 
   const buttonStyle =
     "flex items-center text-[15px] text-tgray font-semibold w-[276px] h-[44px] border-[1px] border-bgray mt-3 px-[1rem]";
@@ -79,7 +80,7 @@ const LogInCard = ({ setIsLogInHidden, setIsSignUpHidden }: IProps) => {
                   onClick={(e) => {
                     e.preventDefault();
 
-                    google.accounts.id.prompt((notification) => {
+                    google.accounts.id.prompt((notification: any) => {
                       if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
                         console.log("Something went wrong. Try signing up in another way.");
                       }

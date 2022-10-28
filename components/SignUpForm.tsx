@@ -37,7 +37,7 @@ const SignUpForm = ({ setIsSignUpHidden }: IProps) => {
   const submitColor = isDisabled ? "text-gray-400" : "text-white";
   const submitBg = isDisabled ? "bg-gray-200" : "bg-primary";
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (isDisabled) return;

@@ -33,7 +33,7 @@ const HarderCard = ({ itemName, answerArray, setAnswerArray, handleSubmit }: IPr
       dataArray.push(document.getElementById(`input_${index}`)?.getAttribute("value"));
     }
 
-    const answer = { data: dataArray.filter((element) => element), subject: itemName };
+    const answer: any = { data: dataArray.filter((element) => element), subject: itemName };
 
     setAnswerArray([...answerArray, answer]);
 

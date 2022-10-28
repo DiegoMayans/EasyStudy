@@ -9,7 +9,7 @@ interface IProps {
   _idx: number;
 }
 
-const Item = ({ data, subject, _idx }: IProps) => {
+const Item = ({ data, subject }: IProps) => {
   const [dataHidden, setDataHidden] = useState(true);
   let itemArr: JSX.Element[] = [];
 

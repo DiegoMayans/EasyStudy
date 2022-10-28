@@ -15,6 +15,7 @@ interface IProps {
 }
 
 const SignUpCard = ({ setIsSignUpHidden, setIsLogInHidden }: IProps) => {
+  const google = window.google;
   const [isSelectHidden, setIsSelectHidden] = useState(false);
   const [showEmailSignUp, setShowEmailSignUp] = useState(false);
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const SignUpCard = ({ setIsSignUpHidden, setIsLogInHidden }: IProps) => {
       cancel_on_tap_outside: false,
       context: "signup",
     });
-  }, []);
+  }, [dispatch, google.accounts.id]);
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -49,7 +50,7 @@ const SignUpCard = ({ setIsSignUpHidden, setIsLogInHidden }: IProps) => {
   const handleGoogleSignUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
-    google.accounts.id.prompt((notification) => {
+    google.accounts.id.prompt((notification: any) => {
       if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
         console.log("Something went wrong. Try signing up in another way.");
       }
